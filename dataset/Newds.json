@@ -1,0 +1,19 @@
+{
+	"name": "Newds",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_new",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Emp_3",
+				"folderPath": "Input",
+				"container": "adfdemo"
+			}
+		}
+	}
+}
