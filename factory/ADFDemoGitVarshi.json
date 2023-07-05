@@ -1,0 +1,9 @@
+{
+	"name": "ADFDemoGitVarshi",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c1cecffc-3336-4b8b-a538-272e3540567e",
+		"tenantId": "6394db32-9830-449c-a803-a715166f2745"
+	}
+}
