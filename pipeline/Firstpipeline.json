@@ -1,0 +1,67 @@
+{
+	"name": "Firstpipeline",
+	"properties": {
+		"description": "First pipeline",
+		"activities": [
+			{
+				"name": "Copydata",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "adfdemo/Input/Data.txt"
+					},
+					{
+						"name": "Destination",
+						"value": "adfdemo/output/data.csv"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_demo",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_out",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "ControlFlow activities"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-06-30T01:17:20Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

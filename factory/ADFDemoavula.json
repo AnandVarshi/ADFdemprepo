@@ -1,0 +1,9 @@
+{
+	"name": "ADFDemoavula",
+	"location": "centralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "0ec8b4ba-5d50-4d30-b1d3-a62a41a831d3",
+		"tenantId": "6394db32-9830-449c-a803-a715166f2745"
+	}
+}

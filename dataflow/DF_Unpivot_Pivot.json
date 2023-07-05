@@ -1,0 +1,97 @@
+{
+	"name": "DF_Unpivot_Pivot",
+	"properties": {
+		"folder": {
+			"name": "Schema modifier"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "MCAS",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Pivot",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "Unpivot",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				}
+			],
+			"transformations": [
+				{
+					"name": "unpivot1"
+				},
+				{
+					"name": "pivot1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          PC as string,",
+				"          MFG as string,",
+				"          Year as string,",
+				"          CH101 as integer,",
+				"          CH102 as integer,",
+				"          CH103 as integer,",
+				"          CH104 as integer,",
+				"          CH105 as integer,",
+				"          CH106 as integer,",
+				"          CH107 as integer,",
+				"          CH108 as integer,",
+				"          CH109 as integer,",
+				"          CH110 as integer,",
+				"          CH111 as integer,",
+				"          CH112 as integer,",
+				"          CH113 as integer,",
+				"          CH114 as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 unpivot(output(",
+				"          Item_grp_id as string,",
+				"          Allocation as integer",
+				"     ),",
+				"     ungroupBy(PC,",
+				"          MFG,",
+				"          Year),",
+				"     lateral: true,",
+				"     ignoreNullPivots: true,",
+				"     partitionBy('roundRobin', 2)) ~> unpivot1",
+				"unpivot1 pivot(groupBy(PC,",
+				"          MFG,",
+				"          Year),",
+				"     pivotBy(Item_grp_id),",
+				"     { } = sum(Allocation),",
+				"     columnNaming: '$N$V',",
+				"     lateral: true) ~> pivot1",
+				"pivot1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['Pivot'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink1",
+				"unpivot1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['Unpivot'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink2"
+			]
+		}
+	}
+}

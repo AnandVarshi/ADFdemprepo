@@ -1,0 +1,94 @@
+{
+	"name": "MCAS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "MCAS.csv",
+				"folderPath": "Input",
+				"container": "adfdemo"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "PC",
+				"type": "String"
+			},
+			{
+				"name": "MFG",
+				"type": "String"
+			},
+			{
+				"name": "Year",
+				"type": "String"
+			},
+			{
+				"name": "CH101",
+				"type": "String"
+			},
+			{
+				"name": "CH102",
+				"type": "String"
+			},
+			{
+				"name": "CH103",
+				"type": "String"
+			},
+			{
+				"name": "CH104",
+				"type": "String"
+			},
+			{
+				"name": "CH105",
+				"type": "String"
+			},
+			{
+				"name": "CH106",
+				"type": "String"
+			},
+			{
+				"name": "CH107",
+				"type": "String"
+			},
+			{
+				"name": "CH108",
+				"type": "String"
+			},
+			{
+				"name": "CH109",
+				"type": "String"
+			},
+			{
+				"name": "CH110",
+				"type": "String"
+			},
+			{
+				"name": "CH111",
+				"type": "String"
+			},
+			{
+				"name": "CH112",
+				"type": "String"
+			},
+			{
+				"name": "CH113",
+				"type": "String"
+			},
+			{
+				"name": "CH114",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
