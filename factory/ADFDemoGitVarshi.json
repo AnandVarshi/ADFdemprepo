@@ -1,5 +1,13 @@
 {
 	"name": "ADFDemoGitVarshi",
+	"properties": {
+		"globalParameters": {
+			"datalakepath": {
+				"type": "string",
+				"value": "AAAAA"
+			}
+		}
+	},
 	"location": "eastus",
 	"identity": {
 		"type": "SystemAssigned",
