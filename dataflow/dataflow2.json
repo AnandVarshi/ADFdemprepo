@@ -22,7 +22,12 @@
 			"sinks": [],
 			"transformations": [],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          Name as string,",
+				"          Item as string,",
+				"          Qty as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> Fuzzy1",
 				"source(output(",
