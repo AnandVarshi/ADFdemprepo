@@ -10,6 +10,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "Fuzzy1"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_fuzzy2",
+						"type": "DatasetReference"
+					},
+					"name": "Fuzzy2"
 				}
 			],
 			"sinks": [],
@@ -17,7 +24,15 @@
 			"scriptLines": [
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Fuzzy1"
+				"     ignoreNoFilesFound: false) ~> Fuzzy1",
+				"source(output(",
+				"          Name as string,",
+				"          Item as string,",
+				"          Qty as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Fuzzy2"
 			]
 		}
 	}
