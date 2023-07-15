@@ -55,7 +55,7 @@
 				"     matchType:'fuzzy',",
 				"     ignoreSpaces: false,",
 				"     scoreColumn:'60',",
-				"     broadcast: 'auto')~> join1",
+				"     broadcast: 'off')~> join1",
 				"join1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     partitionFileNames:['Fuzzy'],",
